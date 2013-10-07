@@ -9,7 +9,7 @@ import persistance.User;
  *
  */
 @Entity
-
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Admin extends User implements Serializable {
 
 	
@@ -29,4 +29,15 @@ public class Admin extends User implements Serializable {
 				+ super.toString() + "]";
 	}
    
+	public Admin( String firstName, String lastName, String login,
+			String pwd, String email, String phone, String adress){
+		this.setAdress(adress);
+		this.setEmail(email);
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setLogin(login);
+		this.setPwd(pwd);
+		this.setPhone(phone);
+		
+	}
 }

@@ -11,12 +11,12 @@ import persistance.User;
  *
  */
 @Entity
-
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Employee extends User implements Serializable {
 
 	
 	private String poste;
-	private int cin;
+	private String cin;
 	private Batiment batiment ;
 	private static final long serialVersionUID = 1L;
 
@@ -30,11 +30,11 @@ public class Employee extends User implements Serializable {
 	public void setPoste(String poste) {
 		this.poste = poste;
 	}   
-	public int getCin() {
+	public String getCin() {
 		return this.cin;
 	}
 
-	public void setCin(int cin) {
+	public void setCin(String cin) {
 		this.cin = cin;
 	}
 	
@@ -46,13 +46,7 @@ public class Employee extends User implements Serializable {
 	public void setBatiment(Batiment batiment) {
 		this.batiment = batiment;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + cin;
-		return result;
-	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,6 +68,19 @@ public class Employee extends User implements Serializable {
 				+ getLastName() + ", getLogin()=" + getLogin() + ", getPwd()="
 				+ getPwd() + ", getEmail()=" + getEmail() + ", getPhone()="
 				+ getPhone() + ", getAdress()=" + getAdress() + ", toString()=" + super.toString() + "]";
+	}
+	public Employee(String firstName, String lastName, String login,
+			String pwd, String email, String phone, String adress,String poste, String cin, Batiment batiment) {
+		this.setAdress(adress);
+		this.setEmail(email);
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setLogin(login);
+		this.setPwd(pwd);
+		this.setPhone(phone);
+		this.poste = poste;
+		this.cin = cin;
+		this.batiment = batiment;
 	}
    
 }
