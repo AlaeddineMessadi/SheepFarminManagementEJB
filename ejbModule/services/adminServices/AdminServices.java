@@ -34,7 +34,7 @@ public class AdminServices implements AdminServicesRemote, AdminServicesLocal {
 
 	@Override
 	public void updateAdmin(Admin admin) {
-		ad.refresh(admin);
+		ad.merge(admin);
 		
 	}
 

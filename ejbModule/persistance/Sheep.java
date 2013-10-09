@@ -1,5 +1,7 @@
 package persistance;
 
+import static javax.persistence.CascadeType.MERGE;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -243,7 +245,7 @@ public class Sheep implements Serializable {
 		return serialVersionUID;
 	}
 
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade = MERGE)
 	@JoinColumn(name="batiment")
 
 	public Batiment getBatiment() {
@@ -256,28 +258,11 @@ public class Sheep implements Serializable {
 		this.batiment = batiment;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Sheep [Id=" + Id + ", code_sheep=" + code_sheep
-				+ ", race_sheep=" + race_sheep + ", sexe_sheep=" + sexe_sheep
-				+ ", date_birth=" + date_birth + ", date_date_input="
-				+ date_date_input + ", date_output=" + date_output
-				+ ", type_vaccin=" + type_vaccin + ", date_last_vaccin="
-				+ date_last_vaccin + ", date_next_vaccin=" + date_next_vaccin
-				+ ", price_input=" + price_input + ", price_output="
-				+ price_output + ", date_gain=" + date_gain + ", weight_gain="
-				+ weight_gain + ", gmq=" + gmq + ", remarque=" + remarque + "]";
-	}
-
-
-
 	public Sheep(int id, int code_sheep, String race_sheep, String sexe_sheep,
 			Date date_birth, Date date_date_input, Date date_output,
 			String type_vaccin, Date date_last_vaccin, Date date_next_vaccin,
 			float price_input, float price_output, Date date_gain,
-			float weight_gain, float gmq, String remarque, Batiment batiment) {
+			float weight_gain, float gmq, String remarque) {
 		super();
 		Id = id;
 		this.code_sheep = code_sheep;
@@ -295,7 +280,7 @@ public class Sheep implements Serializable {
 		this.weight_gain = weight_gain;
 		this.gmq = gmq;
 		this.remarque = remarque;
-		this.batiment = batiment;
+
 
 	}
 	

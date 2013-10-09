@@ -33,7 +33,7 @@ public class SheepServices implements SheepServicesRemote, SheepServicesLocal {
 
 	@Override
 	public void updateSheep(Sheep sheep) {
-		sh.refresh(sheep);
+		sh.merge(sheep);
 		
 	}
 

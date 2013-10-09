@@ -1,5 +1,7 @@
 package persistance;
 
+import static javax.persistence.CascadeType.MERGE;
+
 import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
@@ -38,7 +40,7 @@ public class Employee extends User implements Serializable {
 		this.cin = cin;
 	}
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade = MERGE)
 	@JoinColumn(name="batiment")
 	public Batiment getBatiment() {
 		return batiment;
@@ -47,30 +49,8 @@ public class Employee extends User implements Serializable {
 		this.batiment = batiment;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Employee other = (Employee) obj;
-		if (cin != other.cin)
-			return false;
-		return true;
-	}
-	@Override
-	public String toString() {
-		return "Employee [poste=" + poste + ", cin=" + cin + ", batiment="
-				+ batiment + ", getIdUser()=" + getIdUser()
-				+ ", getFirstName()=" + getFirstName() + ", getLastName()="
-				+ getLastName() + ", getLogin()=" + getLogin() + ", getPwd()="
-				+ getPwd() + ", getEmail()=" + getEmail() + ", getPhone()="
-				+ getPhone() + ", getAdress()=" + getAdress() + ", toString()=" + super.toString() + "]";
-	}
 	public Employee(String firstName, String lastName, String login,
-			String pwd, String email, String phone, String adress,String poste, String cin, Batiment batiment) {
+			String pwd, String email, String phone, String adress,String poste, String cin) {
 		this.setAdress(adress);
 		this.setEmail(email);
 		this.setFirstName(firstName);
@@ -80,7 +60,6 @@ public class Employee extends User implements Serializable {
 		this.setPhone(phone);
 		this.poste = poste;
 		this.cin = cin;
-		this.batiment = batiment;
 	}
    
 }

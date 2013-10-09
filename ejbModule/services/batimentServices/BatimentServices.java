@@ -33,7 +33,7 @@ public class BatimentServices implements BatimentServicesRemote, BatimentService
 
 	@Override
 	public void updateBatiment(Batiment batiment) {
-		bat.refresh(batiment);
+		bat.merge(batiment);
 		
 	}
 

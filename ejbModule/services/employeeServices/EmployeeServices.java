@@ -34,7 +34,7 @@ public class EmployeeServices implements EmployeeServicesRemote, EmployeeService
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		emp.refresh(employee);
+		emp.merge(employee);
 		
 	}
 

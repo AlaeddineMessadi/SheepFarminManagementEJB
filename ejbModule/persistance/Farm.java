@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
+
 
 @Entity
 public class Farm implements Serializable {
@@ -23,11 +26,12 @@ public class Farm implements Serializable {
 	private int idFarm ;
 	private String nomFarm ;
 	private String adress ;
-	private List<Batiment> batiment = new ArrayList<Batiment>() ;
+	private List<Batiment> batiments = new ArrayList<Batiment>() ;
 
 	public Farm() {
 		super();
 	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getIdFarm() {
@@ -46,13 +50,13 @@ public class Farm implements Serializable {
 		this.nomFarm = nomFarm;
 	}
 
-	@OneToMany(mappedBy="farm",cascade=CascadeType.PERSIST)
-	public List<Batiment> getBatiment() {
-		return batiment;
+	@OneToMany(mappedBy="farm", cascade= CascadeType.ALL)
+	public List<Batiment> getBatiments() {
+		return batiments;
 	}
 
-	public void setBatiment(List<Batiment> batiment) {
-		this.batiment = batiment;
+	public void setBatiments(List<Batiment> batiment) {
+		this.batiments = batiment;
 	}
 	public String getAdress() {
 		return adress;
@@ -60,59 +64,30 @@ public class Farm implements Serializable {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public Farm(int idFarm, String nomFarm, String adress,
-			List<Batiment> batiment) {
+	public Farm(int idFarm, String nomFarm, String adress) {
 		super();
 		this.idFarm = idFarm;
 		this.nomFarm = nomFarm;
 		this.adress = adress;
-		this.batiment = batiment;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((adress == null) ? 0 : adress.hashCode());
-		result = prime * result
-				+ ((batiment == null) ? 0 : batiment.hashCode());
-		result = prime * result + idFarm;
-		result = prime * result + ((nomFarm == null) ? 0 : nomFarm.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Farm other = (Farm) obj;
-		if (adress == null) {
-			if (other.adress != null)
-				return false;
-		} else if (!adress.equals(other.adress))
-			return false;
-		if (batiment == null) {
-			if (other.batiment != null)
-				return false;
-		} else if (!batiment.equals(other.batiment))
-			return false;
-		if (idFarm != other.idFarm)
-			return false;
-		if (nomFarm == null) {
-			if (other.nomFarm != null)
-				return false;
-		} else if (!nomFarm.equals(other.nomFarm))
-			return false;
-		return true;
-	}
-	@Override
-	public String toString() {
-		return "Farm [idFarm=" + idFarm + ", nomFarm=" + nomFarm + ", adress="
-				+ adress + ", batiment=" + batiment + "]";
 	}
 
 
+    public void assignFarmToBatiment(List<Batiment> batiments){
+    /*	this.setBatiments(batiments);
+    	for (Batiment b : batiments){
+    		b.setFarm(this); */
+    	for(Batiment batiment:batiments){
+			batiment.setFarm(this);
+			this.setBatiments(batiments);
+		}
+    	
+    	}
+    	public void BatimentToFarm(List<Batiment> batiments){
+			for(Batiment batiment:batiments){
+				batiment.setFarm(this);
+				
+			}
+			this.batiments=batiments;
+    }
 
 }

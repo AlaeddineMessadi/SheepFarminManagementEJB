@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-
 import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.CascadeType.REMOVE;
-import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.FetchType.LAZY;
+
 
 /**
  * Entity implementation class for Entity: Batiment
@@ -32,7 +29,7 @@ public class Batiment implements Serializable {
 		}
 		private int id_batiment;
 		private String name_batiment;
-		private List<Employee> employee ;
+		private List<Employee> employee = new ArrayList<Employee>() ;
 		private List<Sheep> sheeps=new ArrayList<Sheep>();
 		private Farm farm ;
 		
@@ -57,7 +54,7 @@ public class Batiment implements Serializable {
 			this.name_batiment = name_batiment;
 			
 		}
-		@OneToMany(mappedBy="batiment",cascade=CascadeType.PERSIST)
+		@OneToMany(mappedBy="batiment",cascade={ PERSIST, MERGE })
 		public List<Sheep> getSheeps() {
 			return sheeps;
 		}
@@ -65,21 +62,27 @@ public class Batiment implements Serializable {
 			this.sheeps = sheeps;
 		}
 			
-		public void TestBatiment(List<Sheep> sheeps){
+		public void SheepToBatiment(List<Sheep> sheeps){
 			for(Sheep sheep:sheeps){
 				sheep.setBatiment(this);
-				this.getSheeps().add(sheep);
 			}
-		}
-		@OneToMany (mappedBy="batiment",cascade=CascadeType.PERSIST )
+			this.sheeps = sheeps ;
+		} 
+		@OneToMany (mappedBy="batiment", cascade = { PERSIST, MERGE } )
 		public List<Employee> getEmployee() {
 			return employee;
 		}
 		public void setEmployee(List<Employee> employee) {
 			this.employee = employee;
 		}
-		
-		@ManyToOne(cascade = { MERGE, REMOVE, PERSIST, ALL }, fetch = LAZY)
+
+		public void EmployeeToBatiment(List<Employee> employees){
+			for(Employee employee:employees){
+				employee.setBatiment(this);
+				}
+			this.employee=employees;
+		}
+		@ManyToOne(cascade = MERGE)
 		@JoinColumn(name="farm")
 		public Farm getFarm() {
 			return farm;
@@ -87,68 +90,11 @@ public class Batiment implements Serializable {
 		public void setFarm(Farm farm) {
 			this.farm = farm;
 		}
-		public Batiment(int id_batiment, String name_batiment,
-				List<Employee> employee, List<Sheep> sheeps, Farm farm) {
+		public Batiment(int id_batiment, String name_batiment) {
 			super();
 			this.id_batiment = id_batiment;
 			this.name_batiment = name_batiment;
-			this.employee = employee;
-			this.sheeps = sheeps;
-			this.farm = farm;
 		}
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result
-					+ ((employee == null) ? 0 : employee.hashCode());
-			result = prime * result + ((farm == null) ? 0 : farm.hashCode());
-			result = prime * result + id_batiment;
-			result = prime * result
-					+ ((name_batiment == null) ? 0 : name_batiment.hashCode());
-			result = prime * result
-					+ ((sheeps == null) ? 0 : sheeps.hashCode());
-			return result;
-		}
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Batiment other = (Batiment) obj;
-			if (employee == null) {
-				if (other.employee != null)
-					return false;
-			} else if (!employee.equals(other.employee))
-				return false;
-			if (farm == null) {
-				if (other.farm != null)
-					return false;
-			} else if (!farm.equals(other.farm))
-				return false;
-			if (id_batiment != other.id_batiment)
-				return false;
-			if (name_batiment == null) {
-				if (other.name_batiment != null)
-					return false;
-			} else if (!name_batiment.equals(other.name_batiment))
-				return false;
-			if (sheeps == null) {
-				if (other.sheeps != null)
-					return false;
-			} else if (!sheeps.equals(other.sheeps))
-				return false;
-			return true;
-		}
-		@Override
-		public String toString() {
-			return "Batiment [id_batiment=" + id_batiment + ", name_batiment="
-					+ name_batiment + ", employee=" + employee + ", sheeps="
-					+ sheeps + ", farm=" + farm + "]";
-		}
-		
+	
 		
 	}

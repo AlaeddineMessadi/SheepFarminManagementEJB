@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import persistance.Batiment;
 import persistance.Farm;
 
 /**
@@ -25,7 +26,7 @@ public class FarmServices implements FarmServicesRemote, FarmServicesLocal {
 
 	@Override
 	public void updateFarm(Farm farm) {
-		em.refresh(farm);
+		em.merge(farm);
 		
 	}
 
@@ -43,6 +44,15 @@ public class FarmServices implements FarmServicesRemote, FarmServicesLocal {
 	@Override
 	public List<Farm> getFarms() {
 	    return em.createQuery("FROM Farm",Farm.class).getResultList() ;
+	}
+
+	@Override
+	public void createFarm(Farm farm, List<Batiment> batiments) {
+		
+		for(Batiment batiment:batiments){
+			batiment.setFarm(farm);
+			em.persist(batiment);
+		}
 	}
 
 	

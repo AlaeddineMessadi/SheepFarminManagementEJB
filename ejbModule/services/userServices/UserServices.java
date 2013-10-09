@@ -33,7 +33,7 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 
 	@Override
 	public void updateUser(User user) {
-		u.refresh(user);
+		u.merge(user);
 		
 	}
 
