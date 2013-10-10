@@ -8,6 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import persistance.Batiment;
+import persistance.Employee;
+import persistance.Farm;
+import persistance.Sheep;
 
 /**
  * Session Bean implementation class BatimentServices
@@ -53,5 +56,34 @@ public class BatimentServices implements BatimentServicesRemote, BatimentService
 	public List<Batiment> getBatiment() {
 		return bat.createQuery("FROM Batiment",Batiment.class).getResultList();
 	}
+	
+	
+	/* 
+	 * 
+	 * 	public void createFarm(Farm farm, List<Batiment> batiments) {
+		
+		for(Batiment batiment:batiments){
+			batiment.setFarm(farm);
+			em.persist(batiment);
+		}
+	 * */
+	
+	
+	@Override
+	public void EmployeeToBatiment(Batiment batiment, List<Employee> employees) {
+		
+		for(Employee employee:employees){
+			employee.setBatiment(batiment);
+			bat.persist(employee);
+		}
+	}
 
+	@Override
+	public void SheepToBatiment(Batiment batiment, List<Sheep> sheeps) {
+		for(Sheep sheep:sheeps){
+			sheep.setBatiment(batiment);
+			bat.persist(sheep);
+		}
+		
+	}
 }

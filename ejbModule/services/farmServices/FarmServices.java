@@ -15,7 +15,7 @@ import persistance.Farm;
 @Stateless
 @LocalBean
 public class FarmServices implements FarmServicesRemote, FarmServicesLocal {
-	@PersistenceContext
+	   @PersistenceContext
 	   EntityManager em ;
 
 	@Override

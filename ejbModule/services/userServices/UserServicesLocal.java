@@ -13,4 +13,5 @@ public interface UserServicesLocal {
     public void deleteUser(User user);
     public User findUserById(int idUser);
     public List<User> getUsers();
+    public User authenticate(String login, String password);
 }

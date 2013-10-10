@@ -9,7 +9,7 @@
 		<class>persistance.Batiment</class>
 		<class>persistance.Farm</class>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
 		</properties>
 	</persistence-unit>
 </persistence>

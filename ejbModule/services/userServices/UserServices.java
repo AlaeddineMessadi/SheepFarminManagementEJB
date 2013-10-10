@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import persistance.User;
 
@@ -53,5 +54,16 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 	public List<User> getUsers() {
 		return u.createQuery("From User",User.class).getResultList();
 	}
-
+	public User authenticate(String login, String password) {
+		User found = null;
+		String jpql = "select u from user u where u.login=:p1 and u.pwd=:p2";
+		Query query = u.createQuery(jpql);
+		query.setParameter("p1", login);
+		query.setParameter("p2", password);
+		try{
+			found = (User) query.getSingleResult();
+		}catch(Exception e){
+		}
+		return found;
+	}
 }
