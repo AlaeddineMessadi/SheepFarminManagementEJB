@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 
 import persistance.Batiment;
 import persistance.Employee;
-import persistance.Farm;
 import persistance.Sheep;
 
 /**
