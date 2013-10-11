@@ -47,7 +47,7 @@ public class FarmServices implements FarmServicesRemote, FarmServicesLocal {
 	}
 
 	@Override
-	public void createFarm(Farm farm, List<Batiment> batiments) {
+	public void batimentToFarm(Farm farm, List<Batiment> batiments) {
 		
 		for(Batiment batiment:batiments){
 			batiment.setFarm(farm);

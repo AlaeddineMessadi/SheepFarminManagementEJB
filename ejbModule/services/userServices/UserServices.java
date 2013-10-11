@@ -55,8 +55,8 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		return u.createQuery("From User",User.class).getResultList();
 	}
 	public User authenticate(String login, String password) {
-		User found = null;
-		String jpql = "select u from user u where u.login=:p1 and u.pwd=:p2";
+		User found = new User();
+		String jpql = "select d from User d where d.login=:p1 and d.pwd=:p2";
 		Query query = u.createQuery(jpql);
 		query.setParameter("p1", login);
 		query.setParameter("p2", password);

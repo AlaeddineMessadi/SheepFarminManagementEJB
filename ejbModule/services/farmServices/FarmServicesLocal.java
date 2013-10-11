@@ -3,6 +3,8 @@ package services.farmServices;
 import java.util.List;
 
 import javax.ejb.Local;
+
+import persistance.Batiment;
 import persistance.Farm;
 
 @Local
@@ -12,4 +14,5 @@ public interface FarmServicesLocal {
     public void deleteFarm(Farm farm);
     public Farm findFarmById(int idFarm);
     public List<Farm> getFarms();
+    public void batimentToFarm(Farm farm,List<Batiment> batiments);
 }
