@@ -55,4 +55,5 @@ public class EmployeeServices implements EmployeeServicesRemote, EmployeeService
 		
 		return emp.createQuery("From Employee",Employee.class).getResultList();
 	}
+	
 }
