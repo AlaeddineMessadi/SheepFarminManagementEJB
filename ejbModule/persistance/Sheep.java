@@ -1,9 +1,12 @@
 package persistance;
 
 import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -40,7 +43,7 @@ public class Sheep implements Serializable {
 	private float gmq ;
 	private String remarque ;
 	private Batiment batiment;
-	
+	private List<Vaccine> vaccin = new ArrayList<Vaccine>() ;
 	
 
 @Id
@@ -257,6 +260,26 @@ public class Sheep implements Serializable {
 	public void setBatiment(Batiment batiment) {
 		this.batiment = batiment;
 	}
+	
+
+	@OneToMany(mappedBy="sheep",cascade={ PERSIST, MERGE })
+	public List<Vaccine> getVaccin() {
+		return vaccin;
+	}
+
+
+
+	public void setVaccin(List<Vaccine> vaccin) {
+		this.vaccin = vaccin;
+	}
+	public void vaccineToSheep(List<Vaccine> vaccins){
+		for(Vaccine vaccin:vaccins){
+			vaccin.setSheep(this);
+			}
+		this.vaccin=vaccins;
+	}
+
+
 
 	public Sheep(int id, int code_sheep, String race_sheep, String sexe_sheep,
 			Date date_birth, Date date_date_input, Date date_output,
