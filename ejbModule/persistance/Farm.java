@@ -10,8 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.CascadeType.REMOVE;
+
 
 
 @Entity
@@ -81,11 +80,13 @@ public class Farm implements Serializable {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public Farm(int idFarm, String nomFarm, String adress) {
+	public Farm(int idFarm, String nomFarm, String adress,String telephone,String mail) {
 		super();
 		this.idFarm = idFarm;
 		this.nomFarm = nomFarm;
 		this.adress = adress;
+		this.telephone = telephone;
+		this.mail = mail;
 	}
 
 
