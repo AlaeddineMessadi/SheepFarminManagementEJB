@@ -26,6 +26,23 @@ public class Farm implements Serializable {
 	private int idFarm ;
 	private String nomFarm ;
 	private String adress ;
+	private String telephone;
+	private String mail;
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
 	private List<Batiment> batiments = new ArrayList<Batiment>() ;
 
 	public Farm() {
