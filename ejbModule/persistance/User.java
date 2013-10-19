@@ -80,6 +80,16 @@ public class User implements Serializable {
 	public void setAdress(String adress) {
 		Adress = adress;
 	}
+	@Lob
+	//@Column(name="BOOK_IMAGE", nullable=false, columnDefinition="mediumblob")
+	public byte[] getPhoto() {
+		return this.photo;
+	}
+	
+
+    public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 
 	@Override
 	public String toString() {
@@ -89,7 +99,7 @@ public class User implements Serializable {
 				+ Adress + "]";
 	}
 	public User(int idUser, String firstName, String lastName, String login,
-			String pwd, String email, String phone, String adress) {
+			String pwd, String email, String phone, String adress, byte[] photo) {
 		super();
 		this.idUser = idUser;
 		this.firstName = firstName;
@@ -99,6 +109,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.phone = phone;
 		this.Adress = adress;
+		this.photo = photo ;
 
 	}
 	

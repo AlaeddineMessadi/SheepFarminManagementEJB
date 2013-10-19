@@ -30,7 +30,7 @@ public class Admin extends User implements Serializable {
 	}
    
 	public Admin( String firstName, String lastName, String login,
-			String pwd, String email, String phone, String adress){
+			String pwd, String email, String phone, String adress,byte[] photo){
 		this.setAdress(adress);
 		this.setEmail(email);
 		this.setFirstName(firstName);
@@ -38,6 +38,7 @@ public class Admin extends User implements Serializable {
 		this.setLogin(login);
 		this.setPwd(pwd);
 		this.setPhone(phone);
+		this.setPhoto(photo);
 		
 	}
 }

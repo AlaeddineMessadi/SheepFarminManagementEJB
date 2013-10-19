@@ -50,7 +50,7 @@ public class Employee extends User implements Serializable {
 	}
 	
 	public Employee(String firstName, String lastName, String login,
-			String pwd, String email, String phone, String adress,String poste, String cin) {
+			String pwd, String email, String phone, String adress,String poste, String cin,byte[] photo) {
 		this.setAdress(adress);
 		this.setEmail(email);
 		this.setFirstName(firstName);
@@ -60,6 +60,7 @@ public class Employee extends User implements Serializable {
 		this.setPhone(phone);
 		this.poste = poste;
 		this.cin = cin;
+		this.setPhoto(photo);
 	}
    
 }
