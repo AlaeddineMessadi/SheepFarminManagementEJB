@@ -20,6 +20,7 @@ public class User implements Serializable {
 	private String email;
 	private String phone;
 	private String Adress ;
+	private byte[] photo;
 
 
 	private static final long serialVersionUID = 1L;
