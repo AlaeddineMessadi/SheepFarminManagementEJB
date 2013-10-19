@@ -44,6 +44,7 @@ public class Sheep implements Serializable {
 	private String remarque ;
 	private Batiment batiment;
 	private List<Vaccine> vaccin = new ArrayList<Vaccine>() ;
+	private List<Monitoring> monitoring=new ArrayList<Monitoring>();
 	
 
 @Id
@@ -272,11 +273,32 @@ public class Sheep implements Serializable {
 	public void setVaccin(List<Vaccine> vaccin) {
 		this.vaccin = vaccin;
 	}
+	@OneToMany(mappedBy="sheep",cascade={ PERSIST, MERGE })
+
+	public List<Monitoring> getMonitoring() {
+		return monitoring;
+	}
+
+
+
+	public void setMonitoring(List<Monitoring> monitoring) {
+		this.monitoring = monitoring;
+	}
+
+
+
 	public void vaccineToSheep(List<Vaccine> vaccins){
 		for(Vaccine vaccin:vaccins){
 			vaccin.setSheep(this);
 			}
 		this.vaccin=vaccins;
+	}
+	
+	public void monitoringToSheep(List<Monitoring> monitorings){
+		for(Monitoring monitoring:monitorings){
+			monitoring.setSheep(this);
+			}
+		this.monitoring=monitorings;
 	}
 
 
