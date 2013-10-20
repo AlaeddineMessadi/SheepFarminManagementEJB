@@ -29,6 +29,7 @@ public class Batiment implements Serializable {
 		}
 		private int id_batiment;
 		private String name_batiment;
+		private int capacity;
 		private List<Employee> employee = new ArrayList<Employee>() ;
 		private List<Sheep> sheeps=new ArrayList<Sheep>();
 		private Farm farm ;
@@ -61,7 +62,14 @@ public class Batiment implements Serializable {
 		public void setSheeps(List<Sheep> sheeps) {
 			this.sheeps = sheeps;
 		}
+		
 			
+		public int getCapacity() {
+			return capacity;
+		}
+		public void setCapacity(int capacity) {
+			this.capacity = capacity;
+		}
 		public void SheepToBatiment(List<Sheep> sheeps){
 			for(Sheep sheep:sheeps){
 				sheep.setBatiment(this);
@@ -90,10 +98,11 @@ public class Batiment implements Serializable {
 		public void setFarm(Farm farm) {
 			this.farm = farm;
 		}
-		public Batiment(int id_batiment, String name_batiment) {
+		public Batiment(int id_batiment, String name_batiment,int capacity) {
 			super();
 			this.id_batiment = id_batiment;
 			this.name_batiment = name_batiment;
+			this.capacity=capacity;
 		}
 	
 		
