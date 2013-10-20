@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import persistance.Batiment;
-import persistance.Employee;
 import persistance.Monitoring;
 import persistance.Sheep;
 import persistance.Vaccine;
