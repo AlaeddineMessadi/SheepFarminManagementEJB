@@ -7,7 +7,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import persistance.Employee;
+import persistance.Monitoring;
 import persistance.Sheep;
+import persistance.Vaccine;
 
 /**
  * Session Bean implementation class SheepServices
@@ -51,6 +54,22 @@ public class SheepServices implements SheepServicesRemote, SheepServicesLocal {
 	@Override
 	public List<Sheep> getSheeps() {
 		return sh.createQuery("FROM Sheep",Sheep.class).getResultList() ;
+	}
+
+	@Override
+	public void vaccinTosheep(Sheep sheep, List<Vaccine> vaccines) {
+		for(Vaccine vaccine:vaccines){
+			vaccine.setSheep(sheep);
+			sh.persist(vaccine);
+		}		
+	}
+
+	@Override
+	public void monitoringToSheep(Sheep sheep, List<Monitoring> monitorings) {
+		for(Monitoring monitoring:monitorings){
+			monitoring.setSheep(sheep);
+			sh.persist(monitoring);
+		}	
 	}
 
 }
