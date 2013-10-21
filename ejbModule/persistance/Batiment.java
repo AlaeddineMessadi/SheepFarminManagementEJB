@@ -76,6 +76,7 @@ public class Batiment implements Serializable {
 			}
 			this.sheeps = sheeps ;
 		} 
+		
 		@OneToMany (mappedBy="batiment", cascade = { PERSIST, MERGE } )
 		public List<Employee> getEmployee() {
 			return employee;
