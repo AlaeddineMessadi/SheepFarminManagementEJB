@@ -33,14 +33,8 @@ public class Sheep implements Serializable {
 	private Date date_birth ;
 	private Date date_date_input ;
 	private Date date_output ;
-	private String type_vaccin;
-	private Date date_last_vaccin ;
-	private Date date_next_vaccin ;
 	private float price_input ;
 	private float price_output ;
-	private Date date_gain ;
-	private float weight_gain ;
-	private float gmq ;
 	private String remarque ;
 	private Batiment batiment;
 	private List<Vaccine> vaccin = new ArrayList<Vaccine>() ;
@@ -136,32 +130,6 @@ public class Sheep implements Serializable {
 		this.date_output = date_output;
 	}
 
-	@Temporal(TemporalType.DATE)
-
-	public Date getDate_last_vaccin() {
-		return date_last_vaccin;
-	}
-
-
-
-	public void setDate_last_vaccin(Date date_last_vaccin) {
-		this.date_last_vaccin = date_last_vaccin;
-	}
-
-
-	@Temporal(TemporalType.DATE)
-	public Date getDate_next_vaccin() {
-		return date_next_vaccin;
-	}
-
-
-
-	public void setDate_next_vaccin(Date date_next_vaccin) {
-		this.date_next_vaccin = date_next_vaccin;
-	}
-
-
-
 	public float getPrice_input() {
 		return price_input;
 	}
@@ -185,43 +153,6 @@ public class Sheep implements Serializable {
 	}
 
 
-	@Temporal(TemporalType.DATE)
-	public Date getDate_gain() {
-		return date_gain;
-	}
-
-
-
-	public void setDate_gain(Date date_gain) {
-		this.date_gain = date_gain;
-	}
-
-
-
-	public float getWeight_gain() {
-		return weight_gain;
-	}
-
-
-
-	public void setWeight_gain(float weight_gain) {
-		this.weight_gain = weight_gain;
-	}
-
-
-
-	public float getGmq() {
-		return gmq;
-	}
-
-
-
-	public void setGmq(float gmq) {
-		this.gmq = gmq;
-	}
-
-
-
 	public String getRemarque() {
 		return remarque;
 	}
@@ -231,18 +162,6 @@ public class Sheep implements Serializable {
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
-
-
-	public String getType_vaccin() {
-		return type_vaccin;
-	}
-
-
-
-	public void setType_vaccin(String type_vaccin) {
-		this.type_vaccin = type_vaccin;
-	}
-
 
 
 	public static long getSerialversionuid() {
@@ -316,14 +235,8 @@ public class Sheep implements Serializable {
 		this.date_birth = date_birth;
 		this.date_date_input = date_date_input;
 		this.date_output = date_output;
-		this.type_vaccin = type_vaccin;
-		this.date_last_vaccin = date_last_vaccin;
-		this.date_next_vaccin = date_next_vaccin;
 		this.price_input = price_input;
 		this.price_output = price_output;
-		this.date_gain = date_gain;
-		this.weight_gain = weight_gain;
-		this.gmq = gmq;
 		this.remarque = remarque;
 
 

@@ -64,6 +64,12 @@ public class Vaccine implements Serializable {
 		this.date_vaccin = date_vaccin;
 		this.sheep = sheep;
 	}
+	public Vaccine(String type_vaccin, Date date_vaccin) {
+		super();
+		this.type_vaccin = type_vaccin;
+		this.date_vaccin = date_vaccin;
+	}
+	
 	
 	
    
