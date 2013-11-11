@@ -11,7 +11,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.ALL;import static javax.persistence.FetchType.EAGER;
 
 
 /**
@@ -61,7 +61,7 @@ public class Batiment implements Serializable {
 			
 		}
 		@OneToMany(mappedBy="batiment",cascade={ PERSIST, MERGE })
-		@JsonIgnore
+		//@JsonIgnore
 		public List<Sheep> getSheeps() {
 			return sheeps;
 		}
@@ -84,7 +84,7 @@ public class Batiment implements Serializable {
 		} 
 		
 		@OneToMany (mappedBy="batiment", cascade = ALL)
-		@JsonIgnore
+		//@JsonIgnore
 		public List<Employee> getEmployee() {
 			return employee;
 		}
@@ -100,6 +100,7 @@ public class Batiment implements Serializable {
 		}
 		@ManyToOne(cascade =ALL)
 		@JoinColumn(name="farm")
+		//@JsonIgnore
 		public Farm getFarm() {
 			return farm;
 		}

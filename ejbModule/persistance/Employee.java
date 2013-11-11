@@ -49,7 +49,7 @@ public class Employee extends User implements Serializable {
 	
 	@ManyToOne(cascade = ALL)
 	@JoinColumn(name="batiment")
-	@JsonIgnore
+	//@JsonIgnore
 	public Batiment getBatiment() {
 		return batiment;
 	}

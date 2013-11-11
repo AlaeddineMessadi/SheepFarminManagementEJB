@@ -74,7 +74,7 @@ public class Farm implements Serializable {
 	}
 
 	@OneToMany(mappedBy="farm", cascade= CascadeType.ALL)
-	@JsonIgnore
+	//@JsonIgnore
 	public List<Batiment> getBatiments() {
 		return batiments;
 	}

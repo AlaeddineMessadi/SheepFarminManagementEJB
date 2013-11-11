@@ -34,10 +34,10 @@ public interface UserServicesRemote {
 	@Produces("text/plain")
     public void deleteUser(User user);
 	@GET
-	@Path("/findUserById")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public User findUserById(int idUser);
+	@Path("/findUserById/{idUser}")
+	//@Consumes("application/xml")
+	@Produces("application/json")
+    public User findUserById(@PathParam("idUser")int idUser);
 	@GET
 	@Path("/getUsers")
 	//@Consumes("application/xml")
