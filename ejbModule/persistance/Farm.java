@@ -10,10 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 
 @Entity
+@XmlRootElement
 public class Farm implements Serializable {
 	
 	
@@ -27,6 +29,7 @@ public class Farm implements Serializable {
 	private String adress ;
 	private String telephone;
 	private String mail;
+	
 	public String getMail() {
 		return mail;
 	}
@@ -42,6 +45,7 @@ public class Farm implements Serializable {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
 	private List<Batiment> batiments = new ArrayList<Batiment>() ;
 
 	public Farm() {
@@ -91,9 +95,6 @@ public class Farm implements Serializable {
 
 
     public void assignFarmToBatiment(List<Batiment> batiments){
-    /*	this.setBatiments(batiments);
-    	for (Batiment b : batiments){
-    		b.setFarm(this); */
     	for(Batiment batiment:batiments){
 			batiment.setFarm(this);
 			this.setBatiments(batiments);
@@ -108,4 +109,68 @@ public class Farm implements Serializable {
 			this.batiments=batiments;
     }
 
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result
+					+ ((adress == null) ? 0 : adress.hashCode());
+			result = prime * result
+					+ ((batiments == null) ? 0 : batiments.hashCode());
+			result = prime * result + idFarm;
+			result = prime * result + ((mail == null) ? 0 : mail.hashCode());
+			result = prime * result
+					+ ((nomFarm == null) ? 0 : nomFarm.hashCode());
+			result = prime * result
+					+ ((telephone == null) ? 0 : telephone.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Farm other = (Farm) obj;
+			if (adress == null) {
+				if (other.adress != null)
+					return false;
+			} else if (!adress.equals(other.adress))
+				return false;
+			if (batiments == null) {
+				if (other.batiments != null)
+					return false;
+			} else if (!batiments.equals(other.batiments))
+				return false;
+			if (idFarm != other.idFarm)
+				return false;
+			if (mail == null) {
+				if (other.mail != null)
+					return false;
+			} else if (!mail.equals(other.mail))
+				return false;
+			if (nomFarm == null) {
+				if (other.nomFarm != null)
+					return false;
+			} else if (!nomFarm.equals(other.nomFarm))
+				return false;
+			if (telephone == null) {
+				if (other.telephone != null)
+					return false;
+			} else if (!telephone.equals(other.telephone))
+				return false;
+			return true;
+		}
+
+		@Override
+		public String toString() {
+			return "Farm [idFarm=" + idFarm + ", nomFarm=" + nomFarm
+					+ ", adress=" + adress + ", telephone=" + telephone
+					+ ", mail=" + mail + ", batiments=" + batiments + "]";
+		}
+
+    	
 }

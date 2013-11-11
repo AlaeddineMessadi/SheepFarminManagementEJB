@@ -3,18 +3,55 @@ package services.batimentServices;
 import java.util.List;
 
 import javax.ejb.Remote;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 import persistance.Batiment;
 import persistance.Employee;
 import persistance.Sheep;
 
 @Remote
+@Path("/restbatiment")
 public interface BatimentServicesRemote {
-    public void createBatiment(Batiment batiment);
-    public void updateBatiment(Batiment batiment);
-    public void deleteBatiment(Batiment batiment);
-    public Batiment findBatimentById(int idBatiment);
-    public List<Batiment> getBatiment();
-	void EmployeeToBatiment(Batiment batiment, List<Employee> employees);
-    void SheepToBatiment(Batiment batiment, List<Sheep> sheeps);
+
+	@PUT
+	@Path("/createBatiment")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    public void createBatiment(Batiment batiment);
+	@POST
+	@Path("/updateBatiment")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    public void updateBatiment(Batiment batiment);
+	@DELETE
+	@Path("/deleteBatiment")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    public void deleteBatiment(Batiment batiment);
+	@GET
+	@Path("/findBatimentById")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    public Batiment findBatimentById(int idBatiment);
+	@GET
+	@Path("/getBatiment")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    public List<Batiment> getBatiment();
+	@PUT
+	@Path("/EmployeeToBatiment")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    void EmployeeToBatiment(Batiment batiment, List<Employee> employees);
+	@PUT
+	@Path("/SheepToBatiment")
+	@Consumes("application/xml")
+	@Produces("text/plain")
+	    void SheepToBatiment(Batiment batiment, List<Sheep> sheeps);
 }

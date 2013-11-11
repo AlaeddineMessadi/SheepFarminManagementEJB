@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
 
@@ -14,7 +16,7 @@ import static javax.persistence.CascadeType.MERGE;
  *
  */
 @Entity
-
+@XmlRootElement
 public class Batiment implements Serializable {
 	
 		/**
@@ -104,6 +106,62 @@ public class Batiment implements Serializable {
 			this.id_batiment = id_batiment;
 			this.name_batiment = name_batiment;
 			this.capacity=capacity;
+		}
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + capacity;
+			result = prime * result
+					+ ((employee == null) ? 0 : employee.hashCode());
+			result = prime * result + ((farm == null) ? 0 : farm.hashCode());
+			result = prime * result + id_batiment;
+			result = prime * result
+					+ ((name_batiment == null) ? 0 : name_batiment.hashCode());
+			result = prime * result
+					+ ((sheeps == null) ? 0 : sheeps.hashCode());
+			return result;
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Batiment other = (Batiment) obj;
+			if (capacity != other.capacity)
+				return false;
+			if (employee == null) {
+				if (other.employee != null)
+					return false;
+			} else if (!employee.equals(other.employee))
+				return false;
+			if (farm == null) {
+				if (other.farm != null)
+					return false;
+			} else if (!farm.equals(other.farm))
+				return false;
+			if (id_batiment != other.id_batiment)
+				return false;
+			if (name_batiment == null) {
+				if (other.name_batiment != null)
+					return false;
+			} else if (!name_batiment.equals(other.name_batiment))
+				return false;
+			if (sheeps == null) {
+				if (other.sheeps != null)
+					return false;
+			} else if (!sheeps.equals(other.sheeps))
+				return false;
+			return true;
+		}
+		@Override
+		public String toString() {
+			return "Batiment [id_batiment=" + id_batiment + ", name_batiment="
+					+ name_batiment + ", capacity=" + capacity + ", employee="
+					+ employee + ", sheeps=" + sheeps + ", farm=" + farm + "]";
 		}
 	
 		

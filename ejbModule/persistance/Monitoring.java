@@ -7,13 +7,14 @@ import java.lang.String;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Entity implementation class for Entity: Monitoring
  *
  */
 @Entity
-
+@XmlRootElement
 public class Monitoring implements Serializable {
 
 	
@@ -86,6 +87,60 @@ public class Monitoring implements Serializable {
 		this.grossess = grossess;
 		this.last_date_gain = last_date_gain;
 		this.sheep = sheep;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + gmq;
+		result = prime * result
+				+ ((grossess == null) ? 0 : grossess.hashCode());
+		result = prime * result + id_monitoring;
+		result = prime * result
+				+ ((last_date_gain == null) ? 0 : last_date_gain.hashCode());
+		result = prime * result + Float.floatToIntBits(last_weight);
+		result = prime * result + ((sheep == null) ? 0 : sheep.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Monitoring other = (Monitoring) obj;
+		if (gmq != other.gmq)
+			return false;
+		if (grossess == null) {
+			if (other.grossess != null)
+				return false;
+		} else if (!grossess.equals(other.grossess))
+			return false;
+		if (id_monitoring != other.id_monitoring)
+			return false;
+		if (last_date_gain == null) {
+			if (other.last_date_gain != null)
+				return false;
+		} else if (!last_date_gain.equals(other.last_date_gain))
+			return false;
+		if (Float.floatToIntBits(last_weight) != Float
+				.floatToIntBits(other.last_weight))
+			return false;
+		if (sheep == null) {
+			if (other.sheep != null)
+				return false;
+		} else if (!sheep.equals(other.sheep))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Monitoring [id_monitoring=" + id_monitoring + ", gmq=" + gmq
+				+ ", last_weight=" + last_weight + ", grossess=" + grossess
+				+ ", last_date_gain=" + last_date_gain + ", sheep=" + sheep
+				+ "]";
 	}
 	
    

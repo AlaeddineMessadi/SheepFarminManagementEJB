@@ -2,6 +2,8 @@ package persistance;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import persistance.User;
 
 /**
@@ -10,6 +12,7 @@ import persistance.User;
  */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@XmlRootElement
 public class Admin extends User implements Serializable {
 
 	
@@ -41,4 +44,5 @@ public class Admin extends User implements Serializable {
 		this.setPhoto(photo);
 		
 	}
+	
 }

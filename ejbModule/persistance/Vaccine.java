@@ -7,13 +7,14 @@ import java.lang.String;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Entity implementation class for Entity: Vaccine
  *
  */
 @Entity
-
+@XmlRootElement
 public class Vaccine implements Serializable {
 
 	
@@ -68,6 +69,52 @@ public class Vaccine implements Serializable {
 		super();
 		this.type_vaccin = type_vaccin;
 		this.date_vaccin = date_vaccin;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((date_vaccin == null) ? 0 : date_vaccin.hashCode());
+		result = prime * result + id_vaccin;
+		result = prime * result + ((sheep == null) ? 0 : sheep.hashCode());
+		result = prime * result
+				+ ((type_vaccin == null) ? 0 : type_vaccin.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vaccine other = (Vaccine) obj;
+		if (date_vaccin == null) {
+			if (other.date_vaccin != null)
+				return false;
+		} else if (!date_vaccin.equals(other.date_vaccin))
+			return false;
+		if (id_vaccin != other.id_vaccin)
+			return false;
+		if (sheep == null) {
+			if (other.sheep != null)
+				return false;
+		} else if (!sheep.equals(other.sheep))
+			return false;
+		if (type_vaccin == null) {
+			if (other.type_vaccin != null)
+				return false;
+		} else if (!type_vaccin.equals(other.type_vaccin))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Vaccine [id_vaccin=" + id_vaccin + ", type_vaccin="
+				+ type_vaccin + ", date_vaccin=" + date_vaccin + ", sheep="
+				+ sheep + "]";
 	}
 	
 	
