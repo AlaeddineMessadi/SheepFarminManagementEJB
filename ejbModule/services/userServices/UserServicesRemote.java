@@ -19,20 +19,20 @@ import persistance.User;
 @Path("/restuser")
 public interface UserServicesRemote {
 	@PUT
-	@Path("/createUser")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void createUser(User user);
+	@Path("/createUser/{user}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void createUser(@PathParam("user")User user);
 	@POST
-	@Path("/updateUser")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void updateUser(User user);
+	@Path("/updateUser/{user}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void updateUser(@PathParam("user")User user);
 	@DELETE
-	@Path("/deleteUser")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void deleteUser(User user);
+	@Path("/deleteUser/{users}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void deleteUser(@PathParam("user") User user);
 	@GET
 	@Path("/findUserById/{idUser}")
 	//@Consumes("application/xml")

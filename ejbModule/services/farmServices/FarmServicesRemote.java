@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import persistance.Batiment;
@@ -18,33 +19,33 @@ import persistance.Farm;
 @Path("/restfarm")
 public interface FarmServicesRemote {
 	@PUT
-	@Path("/createFarm")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void createFarm(Farm farm);
+	@Path("/createFarm/{farm}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void createFarm(@PathParam("farm")Farm farm);
 	@POST
-	@Path("/updateFarm")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void updateFarm(Farm farm);
+	@Path("/updateFarm/{farm}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void updateFarm(@PathParam("farm")Farm farm);
 	@DELETE
-	@Path("/deleteFarm")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void deleteFarm(Farm farm);
+	@Path("/deleteFarm/{farm}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void deleteFarm(@PathParam("farm")Farm farm);
 	@GET
-	@Path("/findFarmById")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public Farm findFarmById(int idFarm);
+	@Path("/findFarmById/{idfarm}")
+	//@Consumes("application/json")
+	@Produces("application/json")
+    public Farm findFarmById(@PathParam("idfarm")int idFarm);
 	@GET
 	@Path("/getFarms")
-	@Consumes("application/xml")
-	@Produces("text/plain")
+	//@Consumes("application/xml")
+	@Produces("application/json")
     public List<Farm> getFarms();
 	@PUT
-	@Path("/batimentToFarm")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void batimentToFarm(Farm farm,List<Batiment> batiments);
+	@Path("/batimentToFarm/{farm}/{listbatimenttofarm}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void batimentToFarm(@PathParam("farm")Farm farm,@PathParam("listbatimenttofarm")List<Batiment> batiments);
 }

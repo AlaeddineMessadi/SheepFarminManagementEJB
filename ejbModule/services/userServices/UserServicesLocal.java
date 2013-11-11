@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import persistance.User;
@@ -17,33 +18,33 @@ import persistance.User;
 @Path("/restuser")
 public interface UserServicesLocal {
 	@PUT
-	@Path("/createUser")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void createUser(User user);
+	@Path("/createUser/{user}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void createUser(@PathParam("user")User user);
 	@POST
-	@Path("/updateUser")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void updateUser(User user);
+	@Path("/updateUser/{user}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void updateUser(@PathParam("user")User user);
 	@DELETE
-	@Path("/deleteUser")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void deleteUser(User user);
+	@Path("/deleteUser/{user}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void deleteUser(@PathParam("user") User user);
 	@GET
-	@Path("/findUserById")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public User findUserById(int idUser);
+	@Path("/findUserById/{idUser}")
+	//@Consumes("application/xml")
+	@Produces("application/json")
+    public User findUserById(@PathParam("idUser")int idUser);
 	@GET
 	@Path("/getUsers")
-	@Consumes("application/xml")
-	@Produces("text/plain")
+	//@Consumes("application/xml")
+	@Produces("application/json")
     public List<User> getUsers();
 	@GET
-	@Path("/authenticate")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public User authenticate(String login, String password);
+	@Path("/authenticate/{login}/{password}")
+	//@Consumes("application/xml")
+	@Produces("application/json")
+    public User authenticate(@PathParam("login")String login,@PathParam("password") String password);
 }

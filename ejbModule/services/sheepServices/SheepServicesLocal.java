@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import persistance.Monitoring;
@@ -20,38 +21,39 @@ import persistance.Vaccine;
 public interface SheepServicesLocal {
 
 	@PUT
-	@Path("/createSheep")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void createSheep(Sheep sheep);
+	@Path("/createSheep/{sheep}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void createSheep(@PathParam("sheep")Sheep sheep);
 	@POST
-	@Path("/updateSheep")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void updateSheep(Sheep sheep);
+	@Path("/updateSheep/{sheep}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void updateSheep(@PathParam("sheep")Sheep sheep);
 	@DELETE
-	@Path("/deleteSheep")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public void deleteSheep(Sheep sheep);
+	@Path("/deleteSheep/{sheep}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+    public void deleteSheep(@PathParam("sheep")Sheep sheep);
 	@GET
-	@Path("/findSheepById")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public Sheep findSheepById(int idSheep);
+	@Path("/findSheepById/{idsheep}")
+	//@Consumes("application/xml")
+	@Produces("application/json")
+    public Sheep findSheepById(@PathParam("idsheep")int idSheep);
 	@GET
 	@Path("/getSheeps")
-	@Consumes("application/xml")
-	@Produces("text/plain")
+	//@Consumes("application/xml")
+	@Produces("application/json")
     public List<Sheep> getSheeps();
 	@PUT
-	@Path("/vaccinTosheep")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-	public void vaccinTosheep(Sheep sheep, List<Vaccine> vaccines);
+	@Path("/vaccinTosheep/{sheep}/{listvaccin}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+	public void vaccinTosheep(@PathParam("sheep")Sheep sheep,@PathParam("listvaccin") List<Vaccine> vaccines);
 	@PUT
-	@Path("/monitoringToSheep")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-	public void monitoringToSheep(Sheep sheep, List<Monitoring> monitorings);
+	@Path("/monitoringToSheep/{sheep}/{listmonitoring}")
+	@Consumes("application/json")
+	//@Produces("text/plain")
+	public void monitoringToSheep(@PathParam("sheep") Sheep sheep,@PathParam("listmonitoring") List<Monitoring> monitorings);
+
 }
