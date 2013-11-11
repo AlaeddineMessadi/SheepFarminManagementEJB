@@ -9,9 +9,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import persistance.User;
+
 
 @Remote
 @Path("/restuser")
@@ -38,12 +40,12 @@ public interface UserServicesRemote {
     public User findUserById(int idUser);
 	@GET
 	@Path("/getUsers")
-	@Consumes("application/xml")
-	@Produces("text/plain")
+	//@Consumes("application/xml")
+	@Produces("application/json")
     public List<User> getUsers();
 	@GET
-	@Path("/authenticate")
-	@Consumes("application/xml")
-	@Produces("text/plain")
-    public User authenticate(String login, String password);
+	@Path("/authenticate/{login}/{password}")
+	//@Consumes("application/xml")
+	@Produces("application/json")
+    public User authenticate(@PathParam("login")String login,@PathParam("password") String password);
 }

@@ -7,8 +7,11 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.ALL;
 
 
 /**
@@ -58,6 +61,7 @@ public class Batiment implements Serializable {
 			
 		}
 		@OneToMany(mappedBy="batiment",cascade={ PERSIST, MERGE })
+		@JsonIgnore
 		public List<Sheep> getSheeps() {
 			return sheeps;
 		}
@@ -79,7 +83,8 @@ public class Batiment implements Serializable {
 			this.sheeps = sheeps ;
 		} 
 		
-		@OneToMany (mappedBy="batiment", cascade = { PERSIST, MERGE } )
+		@OneToMany (mappedBy="batiment", cascade = ALL)
+		@JsonIgnore
 		public List<Employee> getEmployee() {
 			return employee;
 		}
@@ -93,7 +98,7 @@ public class Batiment implements Serializable {
 				}
 			this.employee=employees;
 		}
-		@ManyToOne(cascade = MERGE)
+		@ManyToOne(cascade =ALL)
 		@JoinColumn(name="farm")
 		public Farm getFarm() {
 			return farm;

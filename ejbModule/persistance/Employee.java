@@ -7,7 +7,12 @@ import java.lang.String;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import persistance.User;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * Entity implementation class for Entity: Farmer
@@ -42,8 +47,9 @@ public class Employee extends User implements Serializable {
 		this.cin = cin;
 	}
 	
-	@ManyToOne(cascade = MERGE)
+	@ManyToOne(cascade = ALL)
 	@JoinColumn(name="batiment")
+	@JsonIgnore
 	public Batiment getBatiment() {
 		return batiment;
 	}

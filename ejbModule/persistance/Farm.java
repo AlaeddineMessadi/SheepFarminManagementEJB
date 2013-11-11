@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import static javax.persistence.FetchType.EAGER;
+
 
 
 @Entity
@@ -71,6 +74,7 @@ public class Farm implements Serializable {
 	}
 
 	@OneToMany(mappedBy="farm", cascade= CascadeType.ALL)
+	@JsonIgnore
 	public List<Batiment> getBatiments() {
 		return batiments;
 	}

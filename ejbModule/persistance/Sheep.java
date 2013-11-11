@@ -11,6 +11,11 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
+
 
 
 /**
@@ -170,9 +175,9 @@ public class Sheep implements Serializable {
 		return serialVersionUID;
 	}
 
-	@ManyToOne(cascade = MERGE)
+	@ManyToOne(cascade = ALL)
 	@JoinColumn(name="batiment")
-
+    @JsonIgnore
 	public Batiment getBatiment() {
 		return batiment;
 	}
@@ -184,7 +189,7 @@ public class Sheep implements Serializable {
 	}
 	
 
-	@OneToMany(mappedBy="sheep",cascade={ PERSIST, MERGE })
+	@OneToMany(mappedBy="sheep", cascade = ALL)
 	public List<Vaccine> getVaccin() {
 		return vaccin;
 	}
@@ -194,7 +199,7 @@ public class Sheep implements Serializable {
 	public void setVaccin(List<Vaccine> vaccin) {
 		this.vaccin = vaccin;
 	}
-	@OneToMany(mappedBy="sheep",cascade={ PERSIST, MERGE })
+	@OneToMany(mappedBy="sheep", cascade = ALL)
 
 	public List<Monitoring> getMonitoring() {
 		return monitoring;
