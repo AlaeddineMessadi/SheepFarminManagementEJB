@@ -8,6 +8,8 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.MERGE;
@@ -60,8 +62,10 @@ public class Batiment implements Serializable {
 			this.name_batiment = name_batiment;
 			
 		}
-		@OneToMany(mappedBy="batiment",cascade={ PERSIST, MERGE })
-		//@JsonIgnore
+		@OneToMany(mappedBy="batiment", cascade = ALL)
+		
+		@LazyCollection(LazyCollectionOption.FALSE)
+		@JsonIgnore
 		public List<Sheep> getSheeps() {
 			return sheeps;
 		}
@@ -83,8 +87,9 @@ public class Batiment implements Serializable {
 			this.sheeps = sheeps ;
 		} 
 		
-		@OneToMany (mappedBy="batiment", cascade = ALL)
-		//@JsonIgnore
+		@OneToMany (mappedBy="batiment")
+		@LazyCollection(LazyCollectionOption.FALSE)
+		@JsonIgnore
 		public List<Employee> getEmployee() {
 			return employee;
 		}
@@ -99,8 +104,9 @@ public class Batiment implements Serializable {
 			this.employee=employees;
 		}
 		@ManyToOne(cascade =ALL)
+		@LazyCollection(LazyCollectionOption.FALSE)
 		@JoinColumn(name="farm")
-		//@JsonIgnore
+		@JsonIgnore
 		public Farm getFarm() {
 			return farm;
 		}

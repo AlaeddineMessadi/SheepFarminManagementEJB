@@ -177,7 +177,7 @@ public class Sheep implements Serializable {
 
 	@ManyToOne(cascade = ALL)
 	@JoinColumn(name="batiment")
-  //  @JsonIgnore
+    //@JsonIgnore
 	public Batiment getBatiment() {
 		return batiment;
 	}
