@@ -1,18 +1,14 @@
 package persistance;
 
-import static javax.persistence.CascadeType.MERGE;
-
 import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import persistance.User;
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
+
 
 /**
  * Entity implementation class for Entity: Farmer

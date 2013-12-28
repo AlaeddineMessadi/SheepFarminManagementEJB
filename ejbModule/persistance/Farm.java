@@ -12,10 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import static javax.persistence.FetchType.EAGER;
-
-
 
 @Entity
 @XmlRootElement

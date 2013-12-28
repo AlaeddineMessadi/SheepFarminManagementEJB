@@ -1,7 +1,6 @@
 package persistance;
 
-import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.CascadeType.PERSIST;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,10 +10,9 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.EAGER;
+
 
 
 
