@@ -1,3 +1,10 @@
 SheepFarmingManagment
 =====================
-https://www.codeship.io/projects/bb2aa900-1836-0131-0614-4efb8255ec16/status
+
+Subject:
+-------------
+
+Designing and developing and application that helps Sheep Farms to manage their sheeps.
+
+This project was developed in 2014
+
